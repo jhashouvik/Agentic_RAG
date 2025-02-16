@@ -66,9 +66,7 @@ def create_crewai_agent():
     return researcher, analyst
 
 # Streamlit app title
-#st.title("📚 Agantic RAG: Intelligent Document Chatbot within document and outisde of Document 🤖")
-
-st.markdown("<h1 style='font-size: 30px'>📚 Agantic RAG: Intelligent Document Chatbot within document and outside of Document 🤖</h1>", unsafe_allow_html=True)
+st.title("📚 NaiveRAG: Intelligent Document Chatbot 🤖")
 
 # Initialize session state for conversation history
 if "conversation" not in st.session_state:
@@ -155,14 +153,14 @@ if query:
     research_task = Task(
         description=f"Find relevant information for the query: {query}",
         agent=researcher,
-        expected_output="A detailed summary of relevant information with 3-5 points with in 200 words from both local documents and the internet."
+        expected_output="A summary of relevant information with 3-5 points from both local documents and the internet."
     )
 
     # Define the Analysis Task
     analysis_task = Task(
         description="Analyze the retrieved information and provide a clear and concise answer in 3-5 points.",
         agent=analyst,
-        expected_output="A detailed summary with well-structured and accurate answer in 3-5 points to the user's query with in 200 words."
+        expected_output="A well-structured and accurate answer in 3-5 points to the user's query."
     )
 
     # Create the Crew
@@ -173,10 +171,11 @@ if query:
     )
 
     # Execute the Crew
-    result = crew.kickoff(input={"query": query, "context": context})
+    # For CrewAI v0.1.32, pass inputs directly as positional arguments
+    result = crew.kickoff(query, context)
 
     # Clean up the output
-    def clean_output(result, word_limit=200): #
+    def clean_output(result, word_limit=200):
         # Extract the raw output from the CrewOutput object
         if hasattr(result, "raw"):
             text = result.raw
