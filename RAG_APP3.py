@@ -151,7 +151,7 @@ if query:
 
     # Define the Research Task
     research_task = Task(
-        description=f"Find relevant information for the query: {query}",
+        description=f"Find relevant information for the query: {query}\n\nContext:\n{context}",
         agent=researcher,
         expected_output="A summary of relevant information with 3-5 points from both local documents and the internet."
     )
@@ -171,11 +171,6 @@ if query:
     )
 
     # Execute the Crew
-    # For CrewAI v0.1.32, pass inputs directly to the tasks
-    research_task.context = context
-    analysis_task.context = context
-
-    # Kickoff the crew
     result = crew.kickoff()
 
     # Clean up the output
