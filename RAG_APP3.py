@@ -23,7 +23,7 @@ os.environ["TAVILY_API_KEY"] = os.getenv("TAVILY_API_KEY")  # Tavily API key
 
 # Initialize LLM with explicit LiteLLM provider
 llm = ChatGroq(
-    model="groq/llama-3.3-70b-versatile",  # Explicitly specify the provider and model
+    model="llama3-8b-8192",  # Explicitly specify the provider and model
     groq_api_key=os.getenv("GROQ_API_KEY")
 )
 
