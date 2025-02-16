@@ -153,14 +153,14 @@ if query:
     research_task = Task(
         description=f"Find relevant information for the query: {query}\n\nContext:\n{context}",
         agent=researcher,
-        expected_output="A summary of relevant information with 3-5 points from both local documents and the internet."
+        expected_output="A detailed summary of relevant information with 3-5 points with in 200 words from both local documents and the internet."
     )
 
     # Define the Analysis Task
     analysis_task = Task(
         description="Analyze the retrieved information and provide a clear and concise answer in 3-5 points.",
         agent=analyst,
-        expected_output="A well-structured and accurate answer in 3-5 points to the user's query."
+        expected_output="A detailed summary with well-structured and accurate answer in 3-5 points to the user's query with in 200 words."
     )
 
     # Create the Crew
