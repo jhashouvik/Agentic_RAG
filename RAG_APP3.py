@@ -171,8 +171,12 @@ if query:
     )
 
     # Execute the Crew
-    # For CrewAI v0.1.32, pass inputs directly as positional arguments
-    result = crew.kickoff(query, context)
+    # For CrewAI v0.1.32, pass inputs directly to the tasks
+    research_task.context = context
+    analysis_task.context = context
+
+    # Kickoff the crew
+    result = crew.kickoff()
 
     # Clean up the output
     def clean_output(result, word_limit=200):
