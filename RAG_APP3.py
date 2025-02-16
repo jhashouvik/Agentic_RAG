@@ -66,7 +66,7 @@ def create_crewai_agent():
     return researcher, analyst
 
 # Streamlit app title
-st.title("📚 NaiveRAG: Intelligent Document Chatbot 🤖")
+st.markdown("<h1 style='font-size: 30px'>📚 Agantic RAG: Intelligent Document Chatbot within document and outside of Document 🤖</h1>", unsafe_allow_html=True)
 
 # Initialize session state for conversation history
 if "conversation" not in st.session_state:
