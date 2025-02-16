@@ -173,7 +173,7 @@ if query:
     )
 
     # Execute the Crew
-    result = crew.kickoff({"query": query, "context": context})
+    result = crew.kickoff(input={"query": query, "context": context})
 
     # Clean up the output
     def clean_output(result, word_limit=200): #
